@@ -1,0 +1,34 @@
+<html>
+<body>
+  <p>This iframe was loaded by the Viewer API!</p>
+  <!-- Your emptry iframe with some extra attributes -->
+  <iframe src="" id="api-frame" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" width="640px" height="320px"></iframe>
+  <!-- The API -->
+  <script src="https://d2f25wgezub9nf.cloudfront.net/api/sketchfab-viewer-1.0.0.js"></script>
+
+<!-- Your new script -->
+  <script type="text/javascript">
+    // The iframe
+    var iframe = document.getElementById( 'api-frame' );
+    // API version
+    var version = '1.0.0';
+    // Model to load
+    var urlid = '048b61104435430d9e82c4316d8bb3c3';
+    // Sketchfab API client object
+    var client = new Sketchfab( version, iframe );
+
+ // Initialize the API
+    client.init( urlid, {
+      // API is ready to use. You can interact with the viewer using the api object passed to the success function
+      success: function onSuccess( api ){
+        // Start the viewer immediately
+        api.start();
+      },
+      // If initialization fails, throw an error
+      error: function onError() {
+        console.log( 'Viewer error' );
+      }
+    } );
+  </script>
+</body>
+</html>
